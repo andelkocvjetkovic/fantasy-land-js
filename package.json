@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "git@github.com:andelkocvjetkovic/fantasy-land-js.git",
   "author": "Andelko Cvjetkovic <and3lko@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "daggy": "^1.5.0"
+  }
 }
