@@ -1,4 +1,4 @@
-import { Line, Shape, Coord } from "./0.mjs";
+import { Line, Shape, Coord } from "./daggy/0.mjs";
 const origin = Coord(0, 0, 0);
 
 const myLine = Line(origin, origin.translate(2, 4, 6));

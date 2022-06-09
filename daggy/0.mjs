@@ -2,8 +2,8 @@ import daggy from "daggy";
 //- A coordinate in 3D space
 //+ Coord :: (Int,Int,Int) -> Coord
 const Coord = daggy.tagged("Coord", ["x", "y", "z"]);
-Coord.prototype.translate = function (x, y, y) {
-  return Coord(this.x + x, this.y + y, this.z + y);
+Coord.prototype.translate = function (x, y, z) {
+  return Coord(this.x + x, this.y + y, this.z + z);
 };
 
 //- A line between two coordinates
@@ -25,14 +25,4 @@ Shape.prototype.translate = function (x, y, z) {
   });
 };
 
-const Bool = daggy.taggedSum("Bool", { True: [], False: [] });
-const { True, False } = Bool;
-//Flip the value of the Bool
-Bool.prototype.invert = function () {
-  return this.cata({
-    True: () => False,
-    False: () => True,
-  });
-};
-
-export { Coord, Line, Bool, Shape };
+export { Coord, Line, Shape };
