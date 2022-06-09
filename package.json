@@ -1,0 +1,8 @@
+{
+  "name": "fantasy-land-js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:andelkocvjetkovic/fantasy-land-js.git",
+  "author": "Andelko Cvjetkovic <and3lko@gmail.com>",
+  "license": "MIT"
+}
