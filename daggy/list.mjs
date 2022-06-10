@@ -43,9 +43,11 @@ List.prototype.reduce = function (f, initValue) {
   });
 };
 
-console.log(
+/*console.log(
   List.from([1, 2, 3])
     .map((x) => x + 2)
     .filter((x) => x > 4)
     .reduce((acc, x) => (x > 3 ? acc + x : acc), 0)
-);
+);*/
+
+export { List };

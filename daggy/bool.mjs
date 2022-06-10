@@ -9,11 +9,14 @@ Bool.prototype.invert = function () {
     False: () => True,
   });
 };
-Bool.prototype.elseThen = function (than, or) {
+Bool.prototype.thenElse = function (than, or) {
   return this.cata({
     True: than,
     False: or,
   });
 };
-
+True.thenElse(
+  () => console.log("hi"),
+  () => console.log("world")
+);
 export { Bool };
