@@ -35,11 +35,11 @@ List.prototype.filter = function (p) {
   });
 };
 
-// reduce :: List a ~> ((b,a) -> b) -> b -> List b
+// reduce :: List a ~> (((b , a) -> b), b) -> b
 List.prototype.reduce = function (f, initValue) {
   return this.cata({
-    Cons: (head, tail) => [head, ...tail.toArray()].reduce(f, initValue),
-    Nil: () => List.Nil,
+    Cons: (head, tail) => tail.reduce(f, f(initValue, head)),
+    Nil: () => initValue,
   });
 };
 
@@ -47,5 +47,5 @@ console.log(
   List.from([1, 2, 3])
     .map((x) => x + 2)
     .filter((x) => x > 4)
-    .reduce((acc, x) => (x > 2 ? (acc += 10) : acc), 0)
+    .reduce((acc, x) => (x > 3 ? acc + x : acc), 0)
 );
