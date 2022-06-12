@@ -47,7 +47,19 @@ List.prototype.reduce = function (f, initValue) {
 List.prototype.equals = function (that) {
   return this.cata({
     Cons: (head, tail) => head.equals(that.head) && tail.equals(that.tail),
-    Nil: () => that.is(List.Nil),
+    Nil: () => List.Nil.is(that),
+  });
+};
+
+List.prototype.lte = function (that) {
+  return this.cata({
+    Cons: (head, tail) =>
+      that.cata({
+        Cons: (head_, tail_) =>
+          head.equals(head_) ? tail.lte(tail_) : head.lte(head_),
+        Nil: () => false,
+      }),
+    Nil: () => true,
   });
 };
 
