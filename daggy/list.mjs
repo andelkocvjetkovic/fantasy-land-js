@@ -43,6 +43,14 @@ List.prototype.reduce = function (f, initValue) {
   });
 };
 
+// equals:: Setoid a => List a ~> List a -> Bool
+List.prototype.equals = function (that) {
+  return this.cata({
+    Cons: (head, tail) => head.equals(that.head) && tail.equals(that.tail),
+    Nil: () => that.is(List.Nil),
+  });
+};
+
 /*console.log(
   List.from([1, 2, 3])
     .map((x) => x + 2)
