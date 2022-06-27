@@ -21,6 +21,11 @@ Identity.prototype.ap = function (b) {
   return b.map((f) => f(this.x));
 };
 
+// of :: a -> Identity a
+Identity.of = function (a) {
+  return Identity(a);
+};
+
 const X = 42;
 
 //IdLaw
