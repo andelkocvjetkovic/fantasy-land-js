@@ -44,4 +44,15 @@ Maybe.of = function (x) {
   return Just(x);
 };
 
+// alt :: Alf Maybe => Maybe a ~> Maybe a -> Maybe a
+Maybe.prototype.alt = function (that) {
+  return this.cata({
+    Just: (_) => this,
+    Nothing: (_) => that,
+  });
+};
+
+// zero :: Plus Maybe => () -> Maybe a
+Maybe.zero = () => Nothing;
+
 export default Maybe;
