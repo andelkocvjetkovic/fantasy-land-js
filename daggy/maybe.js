@@ -55,4 +55,12 @@ Maybe.prototype.alt = function (that) {
 // zero :: Plus Maybe => () -> Maybe a
 Maybe.zero = () => Nothing;
 
+// reduce :: Maybe a -> ((b,a) -> b,b) -> b
+Maybe.prototype.reduce = function (f, acc) {
+  return this.cata({
+    Just: (x) => f(acc, x),
+    Nothing: () => acc,
+  });
+};
+
 export default Maybe;
