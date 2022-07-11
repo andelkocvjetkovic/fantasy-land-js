@@ -63,4 +63,11 @@ Maybe.prototype.reduce = function (f, acc) {
   });
 };
 
+Maybe.prototype.traverse = function (T, f) {
+  return this.cata({
+    Just: (x) => f(x).map(Just),
+    Nothing: () => T.of(Nothing),
+  });
+};
+
 export default Maybe;

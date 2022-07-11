@@ -1,4 +1,5 @@
 import daggy from "daggy";
+import { lift3 } from "../apply/liftN.js";
 
 // BTree a
 const BTree = daggy.taggedSum("BTree", {
@@ -16,4 +17,17 @@ BTree.prototype.reduce = function (f, acc) {
     Leaf: () => acc,
   });
 };
+
+BTree.prototype.traverse = function (T, f) {
+  return this.cat({
+    Node: (l, x, r) =>
+      //prettier-ignore
+      lift3((l) => (x) => (r) => BTree.Node(l, x, r))
+      (l.traverse(T, f))
+      (f(x))
+      (r.traverse(T, f)),
+    Leaf: () => T.of(BTree.Leaf),
+  });
+};
+
 export default BTree;

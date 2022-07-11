@@ -11,4 +11,8 @@ Pair.prototype.ap = function (that) {
   return Pair(this.x, that.y(this.y));
 };
 
+Pair.prototype.traverse = function (_, f) {
+  return f(this.y).map((x) => Pair(this.x, x));
+};
+
 export default Pair;
