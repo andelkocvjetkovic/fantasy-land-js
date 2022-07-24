@@ -70,4 +70,20 @@ Maybe.prototype.traverse = function (T, f) {
   });
 };
 
+// joing :: Maybe(Maybe a) -> Maybe a
+Maybe.prototype.join = function () {
+  return this.cata({
+    Just: (x) => x,
+    Nothing: () => Nothing,
+  });
+};
+
+// chain :: Maybe a ~> (a -> Maybe b) -> Maybe b
+Maybe.prototype.chain = function (f) {
+  return this.cata({
+    Just: f,
+    Nothing: () => Nothing,
+  });
+};
+
 export default Maybe;

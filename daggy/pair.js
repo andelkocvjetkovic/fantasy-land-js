@@ -15,4 +15,9 @@ Pair.prototype.traverse = function (_, f) {
   return f(this.y).map((x) => Pair(this.x, x));
 };
 
+Pair.prototype.chain = function (f) {
+  const that = f(this.y);
+  return Pair(this.x.concat(that.x), that.y);
+};
+
 export default Pair;
