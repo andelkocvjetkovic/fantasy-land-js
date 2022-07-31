@@ -8,6 +8,7 @@
   "type": "module",
   "dependencies": {
     "daggy": "^1.5.0",
+    "folktale": "2.3.2",
     "rambda": "^7.1.4"
   }
 }
